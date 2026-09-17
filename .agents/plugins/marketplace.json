@@ -1,0 +1,18 @@
+{
+  "name": "lyric-writing-skills",
+  "interface": {
+    "displayName": "Screenwriting Skills"
+  },
+  "plugins": [
+    {
+      "name": "lyric-writing",
+      "description": "18 skills in six layers, with the language layer as the trunk: workflow and the LYR-SPEC contract; general craft (intent gate, structure, imagery, rhyme, narrative); four language layers that are genuinely different methods rather than different tables (Mandarin tone and the thirteen rhyme classes, Cantonese where the writing order reverses, English stress-to-beat, Japanese mora and 符割り); tradition layers (Chinese-style, musical theatre, rap); execution (tone-melody check, backend compile, AI-tell audit); and a case layer. Bidirectionally coupled to the arrangement library. Plain text, no tooling required; answers in the language you ask in",
+      "source": "./plugins/lyric-writing",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

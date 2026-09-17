@@ -1,0 +1,93 @@
+# LYR-SPEC 空模板 —— 复制这份开始写
+#
+# 规范见 LYR-SPEC.schema.md；填好的例子见 example-01-jacket.yaml（正）／example-00-ai-default.yaml（反）
+#
+# ★ 唯一的硬门禁：intent 五项不填齐，不许写第一句词。
+#
+# 写完：按 lw-workflow §5.2 的十条逐条自查；中文词按 lw-tone-check §2.3 手判倒字。
+
+spec_version: "1.0"
+
+meta:
+  title: ""
+  language:                  # 普通话 / 粤语 / 英文 / 日文 / 韩文  ★ 决定读哪个 L2 skill
+  flow:                      # 先曲后词 / 先词后曲  ★ 本库第一个岔路口，两条路阶段表不同
+  style_layer: none          # L3 skill id，如 lw-chinese-style
+  arr_spec:                  # ○ 配套 ARR-SPEC 的路径；有的话六个共享字段必须一致
+
+# ════════════════════════════════════════════════════════════
+# ★ 门禁：四项缺一不许往下写
+# ════════════════════════════════════════════════════════════
+intent:
+  plot_type: ""              # ★ 先答。attitudinal / situational / narrative / expository 四选一。默认不是 narrative
+  one_thing: ""              # ★ 一句话。念出来要像人话，不是主题词。不许"既…又…"
+  to_whom: ""                # ★ 一个能想象出脸的对象。"抒情"和"听众"不算
+  at_what_moment: ""         # ★ 时间点，不是时间段
+  anchor_object: ""          # ★ 能拍照。判据：说得出它的颜色、大小、新旧
+  anchor_phrase: ""          # ★ 态度型／说理型可以用一句话当锚（请求／决定／质问／宣言，副歌反复它），此时 anchor_object 写「无」
+
+# ════════════════════════════════════════════════════════════
+# 词与旋律的咬合
+#   先曲后词 → 从 ARR-SPEC 抄进来
+#   先词后曲 → 这里是产出，反向约束 ARR-SPEC.form[].bars
+# ════════════════════════════════════════════════════════════
+prosody:
+  sections:
+    - id:                    # ★ 必须与 ARR-SPEC.form[].id 一一对应
+      syllables: []          # ★ 词写完之后逐行数出来填，不要先填再写词。只数汉字，标点不算，整行括号的 ad-lib 不算。一个元素 = lyrics 里的一行
+      stress_positions:      # 英文：重音位置；中文：旋律强拍落在第几字
+      peak_syllable: ""      # ★ 全段最高音落在哪个字——这个字必须经得起唱
+      melody_contour: ""
+      notes: []              # ○ MIDI 音高，与字数严格相等。给 倒字判定 用
+
+rhyme:
+  scheme: ""                 # 如 AABA
+  che: []                    # 辙口（十三辙 / 粤语韵部）。★ 不许全曲只用一两个宽辙
+  deliberate_breaks: []      # ★ 哪几处故意不押 —— 全押到底是 AI 味。空数组视为未填
+  surprise_notes: ""         # 哪个韵脚"意外又觉得对"
+
+imagery:
+  concrete_nouns: []         # ★ 能拍照的物件清单
+  system: ""                 # ★ 这些物件构成什么系统 —— 不是随机堆意象
+  forbidden: []              # ★ 本首禁用的抽象词。lint 查它们在词里零出现
+                             #   （脚本内置 25 个基线词：时光/岁月/远方/梦想/自由…）
+
+narrative:
+  pov: ""                    # 人称与视角
+  tense_anchor: ""           # 时间锚点。★ 由 intent.at_what_moment 决定
+  withholding: ""            # ★ 该说的地方不说的那一处在哪
+                             #   AI 会把情绪走完整，真人经常停在难受里
+
+# ════════════════════════════════════════════════════════════
+# ★ 刻意的不对称 —— 三项至少填两项，且每项说得出理由
+# ════════════════════════════════════════════════════════════
+asymmetry:
+  short_line: ""             # 哪一行故意短
+  unrhymed: ""               # 哪一段故意不押
+  chorus_variation: ""       # 末遍副歌改了哪一到三个字，落在段首或段尾。前两遍相同是常态
+  repetition_budget: ""      # ★ 副歌重复几遍、主歌靠什么推进（新事件 / 再看一眼 / 拉远镜头）。见 lw-structure §6.0
+
+# ════════════════════════════════════════════════════════════
+# 词本身
+#   ★ 分行不是排版，是指令 —— 后端把换行当乐句边界读
+#   ★★ 词里不许有任何注释/创作说明 —— 后端会把它唱出来
+# ════════════════════════════════════════════════════════════
+lyrics:
+  - section:
+    lines:
+      - ""
+
+render:
+  suno:
+    section_tags: []         # ★ 数量 == form 段落数。大サビ 映射成 [Bridge] 不是 [Chorus]
+    format_notes: ""
+
+checks:
+  computed: {}               # 脚本填：daozi_rate / xieyin_violations …
+  self_audit:
+    - "[ ] one_thing 念出来是一句人话，不是主题词"
+    - "[ ] anchor_object 说得出颜色、大小、新旧"
+    - "[ ] 去掉标题和专名，别人能说出这首歌讲的是哪一件具体的事"
+    - "[ ] 每一处不对称说得出理由"
+    - "[ ] 中文：倒字高风险处实际唱/念过，确认无误"
+  exemptions: []             # ★ 豁免必须写理由，不许静默跳过

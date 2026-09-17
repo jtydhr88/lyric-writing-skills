@@ -1,0 +1,60 @@
+NOTICE
+
+## What the MIT license covers
+
+The MIT license in LICENSE covers the original work in this repository: the
+six-layer architecture and the way the skills are cut apart, the LYR-SPEC
+schema and its template, the intent gate and its four questions, the numbered
+principles, the checklists and self-check tables, the boundary and transfer
+tables, the analysis table in the case layer, the frontmatter and file
+conventions, and the README text in both languages. That part is free to use,
+modify and redistribute, commercial use included.
+
+## What it does not cover
+
+LICENSE cannot grant rights in material that belongs to someone else. The
+following is quoted or described in this repository and is not relicensed by
+it:
+
+1. **Quotations from the craft books.** Passages from the lyric-writing,
+   prosody, Cantonese practice and phonology books listed under "Source books"
+   in the README. Copyright stays with their authors, translators, editors and
+   publishers. The excerpts in the `reference.md` files are short quotations
+   kept for study and commentary.
+
+2. **Song lyrics.** Lyrics are quoted only as far as an analysis requires — a
+   line or two, attributed, inside a discussion of the technique it
+   illustrates. No complete lyric of a copyrighted song is reproduced here,
+   and none should be added. Copyright in every quoted lyric remains with its
+   author, composer and publisher.
+
+3. **Sondheim's collected lyrics.** *Finishing the Hat* and *Look, I Made a
+   Hat* contain both the lyrics and the author's own commentary, and both are
+   in copyright. What this repository records is the method — his principles,
+   his catalogue of his own faults — with page references. The lyrics
+   themselves are not reproduced.
+
+4. **Lyricist interviews.** The self-reported working methods drawn from
+   interview collections are attributed to the individual lyricist and cited
+   by page. They are quoted as evidence of practice, not republished.
+
+5. **Translations.** A Chinese translation of a foreign work holds its own
+   copyright, separate from the original, belonging to the translator and the
+   publisher.
+
+6. **Backend names.** Suno and any other generation backend named in the
+   execution layer are the marks of their respective owners, named to describe
+   interoperability, with no endorsement implied in either direction.
+
+## Rights holders
+
+The quotations in this repository are made for study and commentary, kept
+short, and attributed with source and page. If you hold rights in quoted
+material — including lyrics — and believe a passage goes beyond that, open an
+issue at https://github.com/jtydhr88/lyric-writing-skills/issues and it will
+be shortened or removed.
+
+## Buy the books
+
+Every skill's "附：来源" section names the books it rests on, with page
+numbers. The tables are an index into those books, not a substitute for them.

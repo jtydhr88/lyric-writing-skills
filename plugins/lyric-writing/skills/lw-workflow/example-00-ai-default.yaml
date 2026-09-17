@@ -1,0 +1,90 @@
+# example-00 —— ★ 反面样本：AI 不给规格时会写出来的那种词
+#
+# 它的每一处"毛病"都是刻意的，对着 lw-ai-tell-audit 的八条：
+#   名词全抽象 / 结构对称到死 / 什么都解决了 / 没有视角和时间 /
+#   倒字不管 / 辙口只挑最顺的 / 押韵选第一个想到的 / 副歌原样三遍
+#
+# 对照 lw-workflow §5.2 的十条：应当只过 1 条。
+
+spec_version: "1.0"
+
+meta:
+  title: "远方的梦"
+  language: 普通话
+  flow: 先词后曲
+  style_layer: none
+
+intent:
+  plot_type: "narrative"                         # ★ 没想过就填了叙事型，于是四段各讲一件事
+  one_thing: "关于青春的回忆和对未来的向往"     # ★ 两件事，而且是主题词不是人话
+  to_whom: "所有在追梦路上的人"                 # ★ 不是对象
+  at_what_moment: "青春年华"                     # ★ 时间段不是时间点
+  anchor_object: "梦想"                          # ★ 拍不了照
+
+prosody:
+  sections:
+    - {id: A1, syllables: [7, 7, 7, 7]}
+    - {id: C1, syllables: [7, 7, 7, 7]}
+    - {id: A2, syllables: [7, 7, 7, 7]}
+    - {id: C2, syllables: [7, 7, 7, 7]}
+    - {id: C3, syllables: [7, 7, 7, 7]}
+
+rhyme:
+  scheme: AAAA
+  che: 江阳                    # ★ 全曲一个宽辙
+  deliberate_breaks: []        # ★ 全押到底
+  surprise_notes: ""
+
+imagery:
+  concrete_nouns: []           # ★ 空的
+  system: ""
+  forbidden: []                # ★ 没设黑名单
+
+narrative:
+  pov: ""                      # ★ 没有视角
+  tense_anchor: ""             # ★ 没有时间
+  withholding: ""              # ★ 什么都说完了
+
+asymmetry:
+  short_line: ""
+  unrhymed: ""
+  chorus_variation: ""         # ★ 三项全空
+
+lyrics:
+  - section: A1
+    lines:
+      - "时光匆匆如流水"
+      - "青春岁月在飞扬"
+      - "心中梦想在闪光"
+      - "追逐自由的方向"
+  - section: C1
+    lines:
+      - "飞向远方的天空"
+      - "张开自由的翅膀"
+      - "让梦想照亮前方"
+      - "永远不会再迷茫"
+  - section: A2
+    lines:
+      - "回忆温柔的过往"
+      - "思念在心中流淌"
+      - "勇气给我的力量"
+      - "奔向希望的远方"
+  - section: C2
+    lines:                       # ★ 与 C1 完全相同
+      - "飞向远方的天空"
+      - "张开自由的翅膀"
+      - "让梦想照亮前方"
+      - "永远不会再迷茫"
+  - section: C3
+    lines:                       # ★ 又一次完全相同
+      - "飞向远方的天空"
+      - "张开自由的翅膀"
+      - "让梦想照亮前方"
+      - "永远不会再迷茫"
+
+render:
+  suno: {section_tags: ["[Verse]", "[Chorus]", "[Verse]", "[Chorus]", "[Chorus]"]}
+
+checks:
+  computed: {}                  # ★ 倒字没跑
+  self_audit: []
