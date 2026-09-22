@@ -197,7 +197,7 @@ The rules are criteria, not gates. A check that does not pass means you change t
 
 **One source tree, every language at runtime.** The skills are written once, in Chinese, and the agent answers in whatever language you asked in. No flag, no separate install, no per-language plugin.
 
-This needs saying carefully here, because this library has a **language layer** and the two things are easily confused. The language layer is about the language a *lyric* is written in: Mandarin tones, Cantonese 協音, English stress, Japanese mora. The policy below is about the language the *instructions* are written in. A Japanese lyricist asking in Japanese gets Japanese answers and the full `lw-japanese` layer; the instruction file behind it is still Chinese.
+This needs saying carefully here, because this library has a **language layer** and the two things are easily confused. The language layer is about the language a *lyric* is written in: Mandarin tones, Cantonese 協音, English stress, Japanese mora, Korean batchim. The policy below is about the language the *instructions* are written in. A Japanese lyricist asking in Japanese gets Japanese answers and the full `lw-japanese` layer; the instruction file behind it is still Chinese.
 
 The skill bodies will not be forked into other languages, and that is a decision rather than an omission. The sister project [screenwriting-skills](https://github.com/jtydhr88/screenwriting-skills) built a full English edition, merged it, then removed it, and the argument that killed it applies here unchanged: if a reader who cannot read Chinese deserves a translated tree, so does a reader who cannot read English, and the next request is Japanese, then Korean, then French. This pack is 31 files. Four languages makes 124 of them, drifting apart independently, with nothing to tell you which one is stale. Translating is the cheap part. The real cost is that forking once removes any principled ground for refusing the second fork.
 
@@ -221,7 +221,7 @@ A different language is not a different table bolted onto the same method. Manda
 ```
 L0 workflow    router, two process tracks (music-first / lyrics-first), the LYR-SPEC contract
 L1 general     intent · structure · imagery · rhyme · narrative
-L2 language    Mandarin · Cantonese · English · Japanese          ← the trunk
+L2 language    Mandarin · Cantonese · English · Japanese · Korean   ← the trunk
 L3 tradition   Chinese-style · musical theatre · rap
 L4 execution   tone-melody check · compile to backends · AI-tell audit
 L5 corpus      taking finished lyrics apart
@@ -251,6 +251,7 @@ L5 corpus      taking finished lyrics apart
 | `lw-cantonese` | Nine tones and 協音 as a **hard** constraint: break it and the word is simply a different word. The pitch-class system that makes tone-to-melody matching computable, the elasticity of natural intervals, the six-tone test method, and the reversed writing order | 黄志华《文字声律与粤语歌创作》, 《词家有道》16 lyricist interviews, 黄霑 |
 | `lw-english` | Stress against beat: word stress cannot be changed, sentence stress can; function words on strong beats; counting stresses rather than syllables; prosody; phrasing, breath and enjambment; the six mistakes Chinese speakers make writing English lyrics | Sheila Davis *Craft of Lyric Writing*, Pattison, *Lyrics: Writing Better Words* |
 | `lw-japanese` | Mora, not syllables — the small tsu, the moraic n and long vowels each take a beat. Pitch accent against melody, 符割り (mapping mora to notes), 分節, deliberate 字余り and 字足らず, the four ways to fix a syllable-count mismatch, 七五調 and the "sounds too Japanese" alarm, and the iron rule for English words in a Japanese lyric | Japanese lyric-and-vocal production practice, 旋律法, pro songmaking |
+| `lw-korean` | One hangul block is one syllable is one note by default — unlike Japanese, a final consonant takes no beat of its own. The batchim (받침): single and double, the seven representative finals, and why a syllable closing on a stop is the wrong place for a long note, a phrase-end hold or a section peak. Liaison (연음) moves a batchim onto the next block, so the sung syllable boundary is not the written one, which moves every breath, caesura and rhyme landing. Plus the sound changes that rewrite a line between paper and voice (nasalization, tensification, aspiration, palatalization, elision, insertion, vowel harmony); why Korean has no tone and no word stress; how Korean rhyme differs from the Mandarin che | Korean phonology (4 titles) |
 
 ### L3 — tradition layers
 
@@ -285,7 +286,7 @@ Six fields must agree in both directions. Either library changing one of them ob
 
 ## What is not in this package
 
-Korean (받침 and its effect on singing) and folk-narrative song. Neither has a source base yet, and this library does not write a skill without one — inventing prosodic rules for a language produces confident, wrong answers. For those, use the general layer and say plainly that the language layer is not covered.
+Folk-narrative song. It has no source base yet, and this library does not write a skill without one — inventing prosodic rules for a form produces confident, wrong answers. For that, use the general layer and say plainly that it is not covered.
 
 ## Source books
 
