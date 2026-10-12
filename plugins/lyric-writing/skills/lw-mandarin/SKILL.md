@@ -1,6 +1,6 @@
 ---
 name: lw-mandarin
-description: The Mandarin language layer for lyric writing (普通话作词的语言层). What Chinese as a language adds to the job: tone is phonemic, so the melody that enters a syllable can change which word is heard; one character is one syllable, so syllable count is character count; the thirteen rhyme families (十三辙) with their finals, example characters, wide-versus-narrow reach and loudness grades; how to pick a rhyme family, when to switch, and which families borrow from each other; level-and-oblique (平仄) and how much looser a lyric is than classical verse; the two- and three-character feet that make a Chinese line scan; and what makes a line easy or hard to sing. Use when writing or checking Mandarin lyrics, when choosing or changing a rhyme family, when a line is a tongue-twister or a high note lands on a closed vowel, when someone asks what 十三辙 is, or when LYR-LINT check 8 says the song sits on one or two wide families. 普通话、中文作词、十三辙、辙口、韵部、平仄、字调、易唱、绕口、开口音闭口音、什么是十三辙。
+description: The Mandarin language layer for lyric writing (普通话作词的语言层). What Chinese as a language adds to the job; tone is phonemic, so the melody that enters a syllable can change which word is heard; one character is one syllable, so syllable count is character count; the thirteen rhyme families (十三辙) with their finals, example characters, wide-versus-narrow reach and loudness grades; how to pick a rhyme family, when to switch, and which families borrow from each other; level-and-oblique (平仄) and how much looser a lyric is than classical verse; the two- and three-character feet that make a Chinese line scan; and what makes a line easy or hard to sing. Use when writing or checking Mandarin lyrics, when choosing or changing a rhyme family, when a line is a tongue-twister or a high note lands on a closed vowel, when someone asks what 十三辙 is, or when LYR-LINT check 8 says the song sits on one or two wide families. 普通话、中文作词、十三辙、辙口、韵部、平仄、字调、易唱、绕口、开口音闭口音、什么是十三辙。
 ---
 
 # 普通话作词的语言层（Mandarin）
@@ -16,6 +16,8 @@ description: The Mandarin language layer for lyric writing (普通话作词的�
 | 中文和英文写词到底差在哪 | §1 |
 | **什么是十三辙** | §2.1 ＋ `reference.md` §1 |
 | 这首歌该押哪个辙 | ★ §2.3–§2.5 |
+| 给戏里的角色写唱段，辙怎么选 | §2.5 末 ＋ `reference.md` §7 |
+| 戏腔、戏曲段落的十三辙和普通话的有什么不同 | `reference.md` §1.5 |
 | 中途想换辙 | §2.6 |
 | 韵脚差一点点，能不能算押上 | §2.7 通韵 |
 | **为什么老是押那几个辙不行** | ★ §2.8 |
@@ -34,9 +36,9 @@ description: The Mandarin language layer for lyric writing (普通话作词的�
 | 中国风的词汇、典故、意象 | `lw-chinese-style` |
 | 这首歌要说什么 | `lw-song-intent` |
 | 段落功能、hook 与标题放在第几句 | `lw-structure`（★ §6 只给中文这一侧的惯例） |
-| 旋律本身怎么写、怎么改 | **库一** `mc-melody` |
-| 那些字该怎么唱（气声、力度、咬字录音） | **库一** `mc-vocal-direction` |
-| 戏曲曲牌格律 | **编剧库**的戏曲层 |
+| 旋律本身怎么写、怎么改 | **作曲编曲** |
+| 那些字该怎么唱（气声、力度、咬字录音） | **声音**（录音与演唱指导） |
+| 戏曲唱词的曲牌格律、板式句格 | **剧作**（戏曲编剧）。本 skill 只借韵：戏曲的十三辙读法见 `reference.md` §1.5，唱词选韵的三好见 `reference.md` §7；依字行腔见 `lw-tone-check` §1 |
 
 ---
 
@@ -69,7 +71,7 @@ description: The Mandarin language layer for lyric writing (普通话作词的�
 
 ★ **代价**：中文没有英文那种"一个词跨两拍"的弹性。
 **一行多一个字就是多一个音**，改字数就是改旋律。
-这是"先词后曲时字数句式能反向约束 `ARR-SPEC.form[].bars`"的原因。
+这是"先词后曲时字数句式能反过来约束小节数 `form[].bars`"的原因。
 
 **自检动作**：每行逐字数一遍，与 `prosody.sections[].syllables` 对齐；
 衬字（"哎""呀""哟"）**要数进去**，它们同样占音。
@@ -166,6 +168,9 @@ description: The Mandarin language layer for lyric writing (普通话作词的�
 
 > **失效条件**：标题字落在窄辙（乜斜、灰堆）上时第 3 条会把你锁死。
 > 这时改用第 2 条，抓副歌里那个非出现不可的词。
+
+★ **给戏里的角色写唱段时，另有两条路**：按人物性格定韵、按重点句定韵；外加宽韵险韵怎么取舍、同字韵什么时候成立——
+陆军的"唱词三好"，见 `reference.md` §7。
 
 ### 2.6 换辙（转韵）
 
@@ -630,4 +635,6 @@ description: The Mandarin language layer for lyric writing (普通话作词的�
 - 李忠勇、何福琼《歌词写作常识》——普通话十三辙韵母表（p0091–p0092）、响度与宽窄分级（p0097–p0098）、转韵（p0098–p0099）、通韵（p0101–p0102）、声调与四声（p0102–p0103）、音组与句式（p0033–p0045）、段式（p0047–p0053）、衬词（p0083–p0085）
 - ⚠ **两家的辙名与分级有出入**（梭波/梭坡、由求/油求；宽窄与响度分级不一致），
   正文与 `reference.md` **并排保留并各标出处**，不做合并。
-- **跨库引用**：编剧库戏曲层的十三辙与依字行腔——同一套东西在戏曲里的老版本。
+- 刘吉典《京剧音乐概论》——京剧的十三辙与普通话十三辙的出入（p0169–p0171），见 `reference.md` §1.5
+- 陆军《编剧理论与技法》——戏曲唱词的三好：选韵、结构编织、布局（p0315–p0328），见 `reference.md` §7
+- 同一个问题在戏曲里的老版本（依字行腔）写在 `lw-tone-check` §1。

@@ -381,7 +381,7 @@ Pattison 在讲阴性韵时给了一条旁证：`appreciate` 的**最后一个�
 1. ★ **加弱起（pickup）**——把整句往前挪，让功能词落在弱拍、实词顶上强拍
 2. **换一个同义实词，音节数对得上**：`the sound of rain` → `the rain came down`
 3. **删掉那个功能词**（英文歌词允许比散文更省）：`I was walking down the road` → `Walking down the road`
-4. ★ **改旋律**：挪那个音符的位置或时值（先曲后词时最贵）→ **库一** `mc-melody`
+4. ★ **改旋律**：挪那个音符的位置或时值（先曲后词时最贵）→ 这是**作曲编曲**的决定，词这一侧写一条消息说明哪个字、为什么（`lw-workflow` §6.2）
 
 **失效条件（故意错位是一种手法）**：
 ★ **错位通常显得笨拙，但在特定语境下能产生 playful / comic / endearing 的效果**

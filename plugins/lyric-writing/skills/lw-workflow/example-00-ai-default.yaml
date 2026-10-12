@@ -82,9 +82,6 @@ lyrics:
       - "让梦想照亮前方"
       - "永远不会再迷茫"
 
-render:
-  suno: {section_tags: ["[Verse]", "[Chorus]", "[Verse]", "[Chorus]", "[Chorus]"]}
-
 checks:
   computed: {}                  # ★ 倒字没跑
   self_audit: []

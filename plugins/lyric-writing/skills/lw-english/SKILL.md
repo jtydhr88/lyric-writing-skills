@@ -42,8 +42,8 @@ description: The English language layer for lyric writing (英文词的重音与
 | **rap 的 flow、重音堆叠、切分与抢拍** | ★ `lw-rap`（本 skill 讲的是"唱"的重音对齐，不是 flow） |
 | 日文モーラ・符割り | `lw-japanese`（**别用英文重音顶替**） |
 | **韩文받침、音节计数、连音与音变** | ★ `lw-korean`（韩英混写的那一半按本 skill 这套过，见 lw-korean §7） |
-| 旋律本身怎么写、怎么改、最高音定在哪 | **库一** `mc-melody` |
-| 那些字该怎么唱（气声、力度、咬字、修音） | **库一** `mc-vocal-direction` |
+| 旋律本身怎么写、怎么改、最高音定在哪 | **作曲编曲** |
+| 那些字该怎么唱（气声、力度、咬字、修音） | **声音**（录音与演唱指导） |
 
 ---
 
@@ -238,7 +238,7 @@ Davis 把同一件事说得更狠，而且给出了可执行的门槛：
 
 ### 4.2 四个层面（Pattison 同节）
 
-- **Words and music**：小调支持或造出悲伤感 → 旋律/和声归**库一**
+- **Words and music**：小调支持或造出悲伤感 → 旋律/和声归**作曲编曲**
 - ★ **Syllables and notes**：**重读音节与重音音符的关系**；对齐时**旋律形状匹配语言的自然形状**
   → ★ **本 skill §1 的全部**
 - ★ **Rhythm and meaning**：意思要"停"，节奏就真的停（`you gotta stop! …（停）… look and listen`）；
@@ -346,7 +346,7 @@ Davis 给这件事起的名字是 **meter fatigue（格律疲劳，p0245）**。
 
 ### 5.1 一行 ＝ 一个乐句 ＝ 一个气口
 
-★ **在 LYR-SPEC 里，分行不是排版，是指令**——后端会把换行当乐句边界读
+★ **在 LYR-SPEC 里，分行不是排版，是指令**——唱的人会把换行当乐句边界读
 （见 `lw-workflow` 的 LYR-SPEC 定义 §1.8）。
 
 **所以英文词的分行必须同时满足三件事**：

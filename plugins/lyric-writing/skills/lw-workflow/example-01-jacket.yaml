@@ -4,7 +4,23 @@ meta:
   language: 普通话
   flow: 先曲后词
   style_layer: none
-  arr_spec: mc-workflow/example-01-citypop.yaml   # 库一包内的示例
+  upstream:                     # 先曲后词：曲这一侧先做。form 的 id／name／bars 与 tempo、key、vocal_persona 当锁死项用（schema §3.2、§3.3）
+    form:
+    - {id: I, name: Intro, bars: 6}         # 无词
+    - {id: A1, name: Verse, bars: 16, energy: 3}
+    - {id: B1, name: Pre-Chorus, bars: 6, energy: 5}
+    - {id: C1, name: Chorus, bars: 16, energy: 7}
+    - {id: A2, name: Verse, bars: 12, energy: 4}
+    - {id: C2, name: Chorus, bars: 16, energy: 8}
+    - {id: D, name: Bridge, bars: 10, energy: 2}
+    - {id: C3, name: Chorus, bars: 18, energy: 9}
+    - {id: O, name: Outro, bars: 8}         # 无词
+    tempo: 112
+    key: D major
+    vocal_persona: 独唱，一个人在自己屋里自言自语，不是对着听众宣告
+    melody: 旋律 demo（本例 prosody.sections[].notes 由它量出）
+    brief: none
+    scene: none
 intent:
   plot_type: situational        # 没有时间线，只有脱水那一下；全曲是对这一下的反应，靠再看一眼推进
   one_thing: 那件卫衣我一直没还，今天洗了
@@ -387,17 +403,6 @@ lyrics:
   - 我知道这件衣服不还了
   - 可是你连地址都换过三次
   - 那就不还了吧
-render:
-  suno:
-    section_tags:
-    - '[Verse]'
-    - '[Pre-Chorus]'
-    - '[Chorus]'
-    - '[Verse]'
-    - '[Chorus]'
-    - '[Bridge]'
-    - '[Chorus]'
-    format_notes: 分行即乐句边界；C1/C2/C3 末句独立成行，前面要有停顿
 checks:
   computed:
     daozi_rate: 0.0482
@@ -408,3 +413,9 @@ checks:
   - '[x] 每一处不对称说得出理由（见 asymmetry 各项）'
   - '[ ] 倒字高风险处实际唱过 —— 待旋律定稿'
   exemptions: []
+messages:
+- from: lyrics
+  to: sound
+  about: lyrics[C1]
+  says: C1／C2／C3 的末句单独成行，前面要空出来；录音时请保留这一句前的换气声，不要修掉——那一下停顿是词的一部分
+  status: open

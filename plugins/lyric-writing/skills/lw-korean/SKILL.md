@@ -1,6 +1,6 @@
 ---
 name: lw-korean
-description: The Korean language layer for lyric writing (韩文词的音节与받침). One hangul block is one syllable is one note by default - unlike Japanese, a final consonant takes no beat of its own. The batchim (받침, syllable-final consonant) is the subject here: single and double batchim, the seven representative finals, and why a syllable closing on a stop is the wrong place for a long note, a phrase-end hold or a section peak. Liaison (연음) moves a batchim onto the next block, so the sung syllable boundary is not the written one, which moves every breath, caesura and rhyme landing. Plus the sound changes that rewrite a line between paper and voice (nasalization, tensification, aspiration, palatalization, elision, insertion, vowel harmony); why Korean has no tone and no word stress; how Korean rhyme differs from the Mandarin che. Use when writing or checking Korean lyrics, fitting hangul to a melody, counting syllables, or picking a word for a held note. 韩文作词、韩语歌词、받침、收音、连音、音变、音节数、K-pop 填词。
+description: The Korean language layer for lyric writing (韩文词的音节与받침). One hangul block is one syllable is one note by default - unlike Japanese, a final consonant takes no beat of its own. The batchim (받침, syllable-final consonant) is the subject here; single and double batchim, the seven representative finals, and why a syllable closing on a stop is the wrong place for a long note, a phrase-end hold or a section peak. Liaison (연음) moves a batchim onto the next block, so the sung syllable boundary is not the written one, which moves every breath, caesura and rhyme landing. Plus the sound changes that rewrite a line between paper and voice (nasalization, tensification, aspiration, palatalization, elision, insertion, vowel harmony); why Korean has no tone and no word stress; how Korean rhyme differs from the Mandarin che. Use when writing or checking Korean lyrics, fitting hangul to a melody, counting syllables, or picking a word for a held note. 韩文作词、韩语歌词、받침、收音、连音、音变、音节数、K-pop 填词。
 ---
 
 # 韩文词的音节与받침（Korean Syllable & Batchim）
@@ -41,10 +41,10 @@ description: The Korean language layer for lyric writing (韩文词的音节与�
 | **英文的重音与节拍对齐** | ★ `lw-english`（韩英混写的那一半按英文那套过，见 §7） |
 | **日文的モーラ、符割り、字余り** | ★ `lw-japanese`（**促音撥音長音各占一拍那套对韩文不成立**，见 §1.2） |
 | ★★ **K-pop 的作词实务惯例**：hook 的音节惯例、韩英混写的行规、题材套路 | **不在本包**。本 skill 只做语音层面的约束；体裁与市场层的惯例本包没有覆盖，用 `lw-structure`、`lw-rhyme`、`lw-imagery` 的通用层写，并在规格单里声明 |
-| 旋律本身怎么写、最高音定在哪、曲式小节数 | **库一** `mc-melody` / `mc-form` |
-| **那些字该怎么唱**（气声、力度、咬字、演唱指导） | **库一** `mc-vocal-direction` |
-| **和声堆叠的型号与 double 策略、话筒与摆位** | **库一** `mc-vocal-direction` §5、§6 与其 reference §1–§2 |
-| **人声录音实操、修音、人声混音** | **库三** 声音设计与混音库 |
+| 旋律本身怎么写、最高音定在哪、曲式小节数 | **作曲编曲** |
+| **那些字该怎么唱**（气声、力度、咬字、演唱指导） | **声音**（录音与演唱指导） |
+| **和声堆叠的型号与 double 策略、话筒与摆位** | **声音**（录音） |
+| **人声录音实操、修音、人声混音** | **声音**（录音、混音） |
 
 ---
 
@@ -157,7 +157,7 @@ description: The Korean language layer for lyric writing (韩文词的音节与�
 4. **连续几个带塞音收音的字排在快速乐句上，咬字会变重、变顿**（每个音节都要闭一次口）——**说唱可以利用这个顿挫，抒情长句要避开。**
 
 ★★ **自检动作（必须做）**：**把每段的最高音、每处长音符、每个句尾延长的位置列出来，逐个看下面那个字有没有收音、是哪一类。**
-> ★ **ㄱ／ㄷ／ㅂ → 换字，或把这个位置的时值改短**（改旋律那侧要与库一商量 → `mc-melody`）；
+> ★ **ㄱ／ㄷ／ㅂ → 换字，或把这个位置的时值改短**（改时值是作曲编曲的决定，写一条消息给 `music`，见 `lw-workflow` §6.2）；
 > ★ **ㄴ／ㅁ／ㅇ／ㄹ → 记一笔，唱得动但音色会变（鼻音色）**；★ **开音节 → 通过。**
 
 **失效条件**：① ★ **连音会让这条检查失效**——纸面带收音的字后面接了以元音开头的音节，**收音就被搬走，这个音节当场变成开音节**（§3），
@@ -414,4 +414,4 @@ description: The Korean language layer for lyric writing (韩文词的音节与�
   ④ **ㄴ 与 ㄹ 相接，郑政德 p0063 同时给出两种结果**；**紧音化在有声音之后「有时…有时…」也没有判据**（郑政德 p0069）——**两处本 skill 都不作判断、不补。**
   ⑤ ★ **术语**：**刘小瑛把「紧音」叫「重音」**（p0123、p0177）——**与英文的 stress 无关**；**本 skill 一律用「紧音／紧音化」。**
 - ⚠ **本 skill 只适用于韩语**；中文见 `lw-mandarin`／`lw-tone-check`，粤语见 `lw-cantonese`，英文见 `lw-english`，日文见 `lw-japanese`——★ **五套约束不可互相顶替**（§7）。
-- **一律出库**（同「边界」表）：K-pop 实务惯例与题材套路 → `lw-structure` ＋ `lw-rhyme` ＋ `lw-imagery`；演唱指导与旋律 → **库一**；人声录音与混音 → **库三**。
+- **一律出库**（同「边界」表）：K-pop 实务惯例与题材套路 → `lw-structure` ＋ `lw-rhyme` ＋ `lw-imagery`；旋律 → **作曲编曲**；演唱指导、人声录音与混音 → **声音**。

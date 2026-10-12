@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "lyric-writing",
-      "description": "18 skills in six layers, with the language layer as the trunk: workflow and the LYR-SPEC contract; general craft (intent gate, structure, imagery, rhyme, narrative); five language layers that are genuinely different methods rather than different tables (Mandarin tone and the thirteen rhyme classes, Cantonese where the writing order reverses, English stress-to-beat, Japanese mora and 符割り, Korean batchim and liaison); tradition layers (Chinese-style, musical theatre, rap); execution (tone-melody check, backend compile, AI-tell audit); and a case layer. Bidirectionally coupled to the arrangement library. Plain text, no tooling required; answers in the language you ask in",
+      "description": "17 skills in six layers, with the language layer as the trunk: workflow and the LYR-SPEC contract; general craft (intent gate, structure, imagery, rhyme, narrative); five language layers that are genuinely different methods rather than different tables (Mandarin tone and the thirteen rhyme classes, Cantonese where the writing order reverses, English stress-to-beat, Japanese mora and 符割り, Korean batchim and liaison); tradition layers (Chinese-style, musical theatre, rap); execution (tone-melody check, AI-tell audit); and a case layer. Bidirectionally coupled to the arrangement library. Plain text, no tooling required; answers in the language you ask in",
       "source": "./plugins/lyric-writing",
       "policy": {
         "installation": "AVAILABLE",

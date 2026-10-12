@@ -33,7 +33,7 @@ description: The case layer - how to take a finished lyric apart and what three 
 | 倒字 | `lw-tone-check` |
 | 中国风、典故、文字游戏 | `lw-chinese-style` |
 | 说唱、音乐剧 | `lw-rap`、`lw-musical-theatre` |
-| 旋律、编曲、配器 | **库一** |
+| 旋律、编曲、配器 | **作曲编曲**（不归本库） |
 | 交稿前的 AI 味终检 | `lw-ai-tell-audit` |
 
 > ★ **最容易越界的一刀**：拆解时发现"这首词的副歌第三遍改了一个字"，
@@ -60,7 +60,7 @@ description: The case layer - how to take a finished lyric apart and what three 
 | **8** | **意象系统** | 这些东西为什么会在同一个画面里（**一句话**） | `imagery.system` | `lw-imagery` |
 | **9** | **语言层** | 押哪个辙、换没换；句式长短；离口语多远 | `rhyme.che` | `lw-mandarin`、`lw-rhyme` |
 | **10** | **不对称与留白** | 哪一行故意短；**该说的地方哪处没说** | `asymmetry`、`narrative.withholding` | `lw-structure`、`lw-narrative` |
-| **11** | **与曲的咬合** | 全曲最高音落在哪个字；哪一句旋律被重复用了 | `prosody.peak_syllable` | `lw-tone-check` ＋ 库一 |
+| **11** | **与曲的咬合** | 全曲最高音落在哪个字；哪一句旋律被重复用了 | `prosody.peak_syllable` | `lw-tone-check` ＋ 作曲编曲 |
 | **12** | ★ **可迁移的一条** | **这首词教会我一个什么动作**（一句话，带动词） | — | — |
 
 **外加一行，不进表但必须写**：

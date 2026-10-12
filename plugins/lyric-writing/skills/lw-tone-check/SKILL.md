@@ -1,20 +1,20 @@
 ---
 name: lw-tone-check
-description: The tone-melody conflict detector and how to read it (倒字检测器). The one objective, computable criterion this library has - Mandarin dao-zi, where a syllable is heard as a different word because the melody enters it against its tone contour. Covers the correct model (incoming interval versus the syllable's own contour, not previous-end versus next-start), how to run it, how to read a risk score, the three boundaries that make it a risk indicator rather than a verdict, and the five ways to fix a flagged syllable. Use when fitting Mandarin words to a melody, when a sung line is misheard as different words, when checking a draft before delivery, or when a melody must be adjusted to fit words already written. 倒字、依字行腔、字调、声调、检测器、唱出来听成了别的字、唱成别的字、字唱错了、tone_check。
+description: The tone-melody conflict detector and how to read it (倒字检测器). The one objective, computable criterion this library has - Mandarin dao-zi, where a syllable is heard as a different word because the melody enters it against its tone contour. Covers the correct model (incoming interval versus the syllable's own contour, not previous-end versus next-start), how to check it by hand, how to read a risk score, the three boundaries that make it a risk indicator rather than a verdict, and the five ways to fix a flagged syllable. Use when fitting Mandarin words to a melody, when a sung line is misheard as different words, when checking a draft before delivery, or when a melody must be adjusted to fit words already written. 倒字、依字行腔、字调、声调、检测器、唱出来听成了别的字、唱成别的字、字唱错了、tone_check。
 ---
 
 # 倒字检测器（Tone Check）
 
 > **这是本库唯一一个不需要任何教材就能建、且立刻产生客观判据的东西。**
 > 声调表和旋律走向都是确定的数据。
-> **它在本库的地位，相当于音频线里的 tempo**——而 tempo 恰好是库一唯一校准成功的那一项。
+> **它在本库的地位，相当于音频里的速度（tempo）**——少数能直接量准、拿来对照的量。
 
 ## 按任务读哪几节
 
 | 任务 | 读 |
 |---|---|
 | 倒字是什么 | §1 |
-| **怎么跑** | §3 |
+| **怎么判** | §3 |
 | 结果怎么读 | §4 |
 | **这个数能不能当判决** | ★ §5 三条边界（**必读**） |
 | 标出风险了怎么改 | ★ §6 五种改法 |
@@ -28,8 +28,8 @@ description: The tone-melody conflict detector and how to read it (倒字检测�
 | **粤语协音** | ★ `lw-cantonese`（**约束更严、且写作顺序反转**） |
 | 押韵 | `lw-rhyme` |
 | 字怎么安到音上（每句几个字） | `lw-workflow` §2 的 S2 ＋ `lw-structure` |
-| 旋律本身怎么改 | **库一** `mc-melody` |
-| 那些字该怎么唱（气声/力度/修音） | **库一** `mc-vocal-direction` |
+| 旋律本身怎么改 | **作曲编曲**（本 skill 标出位置，写一条消息，见 `lw-workflow` §6.2） |
+| 那些字该怎么唱（气声/力度/修音） | **声音**（录音与演唱指导） |
 
 ---
 
@@ -40,8 +40,16 @@ description: The tone-melody conflict detector and how to read it (倒字检测�
 普通话每个字有调型。旋律在字与字之间的走向如果和调的高低关系相反，
 听感上字就变了——**"深爱"(shēn ài) 唱成"神爱"(shén ài)。**
 
-> ★ **戏曲里这叫「依字行腔」**，是同一个问题的老版本——
-> **编剧库的戏曲层有现成的表，可以直接跨库引用。**
+> ★ **戏曲里讲「依字行腔」**（也说因字行腔、按字行腔），是同一个问题从写腔那一侧的老说法：
+> 字有四声，四声各有调值，腔的起伏照着字调走；一对上下句的简单调子，因为字不同、情不同，能唱出各不相同的腔
+> （张庚、郭汉城主编《中国戏曲通论》p0506；刘吉典《京剧音乐概论》p0153）。
+> 反过来，四声唱不正、字音唱走了，戏曲就叫**倒字**，是演唱的大忌（《中国戏曲通论》p0304）。
+
+**给写词的三条推论**：
+
+1. **戏曲是先有字、后有腔**：写唱词的人管字的四声与韵，腔由谱曲的人照字去行。这就是先词后曲的情形——词交出去时把字调轮廓标上（`lw-workflow` §3），谱曲一方才依得了字。
+2. **戏曲一个字唱出来往往要延长好几拍**（《中国戏曲通论》p0304），字内有地方走出调型，腔才依得了字。流行歌一字一音是常态，腔没有地方让给字，所以本 skill 要按**进入这个字的音程**来判（§2）；戏曲风的拖腔段落这个判法会误报（§5.1）。
+3. **地方剧种的腔是照本地方言的调值行的**，写唱词要顾到剧种的方言（《中国戏曲通论》p0257）。写给某个剧种、或整段借某个剧种唱腔的词，字调按那种方言判，不按普通话判——本 skill 只判普通话。
 
 ---
 
@@ -83,7 +91,7 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 
 ---
 
-## 2.3 ★ 没有检测器时怎么手判
+## 2.3 ★ 怎么手判
 
 只查三类位置（它们是倒字最常发生的地方，约占全部字的 1/5）：**每段最高音的字、每句第一个字、大跳（≥5 半音）的落点字**。
 对每个字：查它的调（§2.2 表）→ 看进入它的旋律方向 → 阳平被下行进入、去声被上行进入、平调被 ≥3 半音大跳进入 → 标风险 → **念一遍**。
@@ -99,7 +107,6 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 3. **前后紧挨的两个音音程大、呈上下行跳进的从严**。与 §2.3 的"大跳落点字"同一条
 
 落在这三条里的风险**必改**；其余五条从宽的情形在 `lw-mandarin` §3.6，落在那里的可以放过并记理由。
-仓库内部有同模型的检测器脚本，**不随包发布，用户不需要**。
 
 ---
 
@@ -162,7 +169,7 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 > 它告诉你"这几个字值得念一遍听听"，**念了没问题就放过**。
 
 **自检动作**：
-1. 跑检测器 → 得到高风险字的清单
+1. 按 §2.3 手判（风险值照 §4 的计分算）→ 得到高风险字的清单
 2. ★ **把那几句唱出来**（或念出来）
 3. 真的听成别的字 → 改（§6）；听不出来 → **在 `checks.self_audit` 里记一句"已人工确认"**
 
@@ -181,7 +188,7 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 | **5** | **接受它** | ——但要在 `checks.self_audit` 里**写明理由**（如"这里刻意的错听是个双关"） |
 
 ★ **第 1 条永远先试。** 中文同义词极多，换个字通常就解决了，
-而改旋律会牵动库一的一大堆东西。
+而改旋律会牵动旋律、和声、编曲那一侧的一大堆东西（那是作曲编曲的决定）。
 
 ★★ **第 5 条不是偷懒**：真实的流行歌里有大量"技术上倒字但听起来没问题"的地方
 （见 §5.2、§5.3）。**关键是你知道它在那儿，而不是没检查。**
@@ -216,7 +223,7 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 
 ## 9. 用完必过
 
-- [ ] 跑过检测器，拿到了**数值**
+- [ ] 按 §2.3 查过，拿到了**数值**
 - [ ] ★ **高风险的几句实际唱/念过一遍**，不是只看数字
 - [ ] 人工确认没问题的，在 `self_audit` 里**记了一句**
 - [ ] 要改的，**先试换字**，最后才动旋律
@@ -228,8 +235,8 @@ incoming = notes[i] - notes[i - 1]               # 进入本字的音程（半�
 
 ## 附：来源
 
-- 仓库内部有同模型的检测器脚本（不随插件发布）
 - **一个可调的标定参数**：`semitone_per_degree = 2.0`
   （把五度调值折算成半音的系数，"调值差 1 度 ≈ 2 个半音的听感期望"）
 - ⚠ 本方法不处理一字多音；粤语协音（§7）没有对应判法
-- **跨库引用**：编剧库戏曲层的**依字行腔**与**十三辙**表——同一个问题的老版本
+- **依字行腔与倒字在戏曲里的说法**（§1）：张庚、郭汉城主编《中国戏曲通论》p0257、p0304、p0506；刘吉典《京剧音乐概论》p0153
+- 十三辙（含京剧的读法）在 `lw-mandarin` reference §1

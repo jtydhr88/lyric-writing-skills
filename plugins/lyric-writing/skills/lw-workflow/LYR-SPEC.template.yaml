@@ -13,7 +13,16 @@ meta:
   language:                  # 普通话 / 粤语 / 英文 / 日文 / 韩文  ★ 决定读哪个 L2 skill
   flow:                      # 先曲后词 / 先词后曲  ★ 本库第一个岔路口，两条路阶段表不同
   style_layer: none          # L3 skill id，如 lw-chinese-style
-  arr_spec:                  # ○ 配套 ARR-SPEC 的路径；有的话六个共享字段必须一致
+  tempo:                     # ○ 共享字段（schema §3.3）。先词后曲／只有词这一侧时本库定，定不出写 null 并发消息；先曲后词留空
+  key:                       # ○ 同上
+  upstream:                  # ○ 有就读，没有就按本库自己的分析走（schema §3.2）。先曲后词时共享字段在这里，当锁死项用
+    form: []                 #   段落表 [{id, name, bars, energy}]
+    tempo:
+    key:
+    vocal_persona: ""        #   谁在唱
+    melody: ""               #   旋律出处：demo／谱／MIDI；没有写 none
+    brief: ""                #   委托的要求；没有写 none
+    scene: ""                #   这首歌在戏或画面里的位置；不在戏里写 none
 
 # ════════════════════════════════════════════════════════════
 # ★ 门禁：四项缺一不许往下写
@@ -28,17 +37,26 @@ intent:
 
 # ════════════════════════════════════════════════════════════
 # 词与旋律的咬合
-#   先曲后词 → 从 ARR-SPEC 抄进来
-#   先词后曲 → 这里是产出，反向约束 ARR-SPEC.form[].bars
+#   先曲后词 → 照 meta.upstream 的段落表与旋律量出来
+#   先词后曲 → 这里是产出，连同下面的 form 一起交出去，约束小节数
 # ════════════════════════════════════════════════════════════
 prosody:
   sections:
-    - id:                    # ★ 必须与 ARR-SPEC.form[].id 一一对应
+    - id:                    # ★ 段落 id，与 form[].id 一一对应
       syllables: []          # ★ 词写完之后逐行数出来填，不要先填再写词。只数汉字，标点不算，整行括号的 ad-lib 不算。一个元素 = lyrics 里的一行
       stress_positions:      # 英文：重音位置；中文：旋律强拍落在第几字
       peak_syllable: ""      # ★ 全段最高音落在哪个字——这个字必须经得起唱
-      melody_contour: ""
+      melody_contour: ""     # 先曲后词：量到的旋律走向；先词后曲：词对旋律走向的要求（字调轮廓）
       notes: []              # ○ MIDI 音高，与字数严格相等。给 倒字判定 用
+
+# ════════════════════════════════════════════════════════════
+# 与歌曲另一侧共享的字段（schema §3.3）：谁先做谁定，后做的一方只读，想改发消息
+#   先词后曲／只有词这一侧 → 本库在这里定（连同 meta.tempo、meta.key）
+#   先曲后词 → 留空，读 meta.upstream
+# ════════════════════════════════════════════════════════════
+form: []                     # [{id, name, bars}]；id 与 prosody.sections[].id、lyrics[].section 相同
+vocal:
+  persona: ""                # 谁在唱：性别、年纪、人设；与 narrative.pov 一致
 
 rhyme:
   scheme: ""                 # 如 AABA
@@ -50,7 +68,8 @@ imagery:
   concrete_nouns: []         # ★ 能拍照的物件清单
   system: ""                 # ★ 这些物件构成什么系统 —— 不是随机堆意象
   forbidden: []              # ★ 本首禁用的抽象词。lint 查它们在词里零出现
-                             #   （脚本内置 25 个基线词：时光/岁月/远方/梦想/自由…）
+                             #   （另有 25 个基线词同样查零出现：时光/岁月/远方/梦想/自由/青春/思念/温柔/勇气/
+                             #    回忆/距离/孤独/永远/命运/星辰/海洋/天空/翅膀/光芒/希望/believe/dream/forever/destiny/soul）
 
 narrative:
   pov: ""                    # 人称与视角
@@ -69,21 +88,16 @@ asymmetry:
 
 # ════════════════════════════════════════════════════════════
 # 词本身
-#   ★ 分行不是排版，是指令 —— 后端把换行当乐句边界读
-#   ★★ 词里不许有任何注释/创作说明 —— 后端会把它唱出来
+#   ★ 分行不是排版，是指令 —— 唱的人把换行当乐句边界读
+#   ★★ 词里不许有任何注释/创作说明 —— 照着词唱的人会把它唱出来
 # ════════════════════════════════════════════════════════════
 lyrics:
   - section:
     lines:
       - ""
 
-render:
-  suno:
-    section_tags: []         # ★ 数量 == form 段落数。大サビ 映射成 [Bridge] 不是 [Chorus]
-    format_notes: ""
-
 checks:
-  computed: {}               # 脚本填：daozi_rate / xieyin_violations …
+  computed: {}               # 手判后填：daozi_rate / xieyin_violations …
   self_audit:
     - "[ ] one_thing 念出来是一句人话，不是主题词"
     - "[ ] anchor_object 说得出颜色、大小、新旧"
@@ -91,3 +105,11 @@ checks:
     - "[ ] 每一处不对称说得出理由"
     - "[ ] 中文：倒字高风险处实际唱/念过，确认无误"
   exemptions: []             # ★ 豁免必须写理由，不许静默跳过
+
+# ════════════════════════════════════════════════════════════
+# 消息通道（schema §3.4）：公共区，任何一方都可以写；本库写 from: lyrics
+#   例：- {from: lyrics, to: music, about: "form[C2].bars", says: "C2 第 3 句放不进 4 小节，请改成 6 小节", status: open}
+#   from／to：lyrics music sound writing production；status：open answered accepted rejected
+#   读不到回话就当没有，本库不等待；写给本库的（to: lyrics）开工时与每次改词前读
+# ════════════════════════════════════════════════════════════
+messages: []

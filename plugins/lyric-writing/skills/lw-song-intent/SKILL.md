@@ -15,7 +15,7 @@ description: The gate you must pass before writing a single line (动笔前必�
 **而这四段可以属于任何一首歌**。那正是听出来是 AI 的原因。
 
 **这五个问题就是强迫做选择的地方。**
-后四项与库一 ARR-SPEC 的 `intent` 四项同构，也与剧本包的"这场戏的价值转折是什么"同构；
+后四项和写曲、写戏动笔前要先答的问题是同一类——先选定说什么、对谁、在哪一刻；
 第一项是词独有的，因为**词有类型，曲没有**。
 
 ## 按任务读哪几节
@@ -304,11 +304,11 @@ kindness、sorrow、memories 这类抽象词**没有人味也没有形状，在�
 ★ **物件没变，它的意义随着歌推进——这就是"贯穿"。**
 这也是词里最经济的结构手段：**不需要解释，只需要让它再出现一次。**
 
-### 5.4 与库一的关系
+### 5.4 交给作曲编曲的一条线索
 
-★ `anchor_object` 常常也能提示编曲的 `arrangement_hook`——
+★ `anchor_object` 常常也能提示编曲的 hook——
 **一个反复出现的物件，配一个反复出现的音响事件。**
-（→ 库一 `mc-arrangement-arch` §7）
+编曲的 hook 怎么做是作曲编曲的事；本库交出去的是 `intent.anchor_object`，以及它在哪几句出现。
 
 ---
 
@@ -396,9 +396,6 @@ kindness、sorrow、memories 这类抽象词**没有人味也没有形状，在�
   `one_thing` 对应"简洁性"（p0086），`to_whom` 对应 singee 的选定与不说教（p0064–0066），
   `at_what_moment` 对应"一瞬间的感受"与时间跳跃要明写（p0076），
   `anchor_object` 对应"具体性"与 Kodak words（p0095）。
-- **与库一的对应**：ARR-SPEC 的 `intent` 也是四项
-  （`one_thing` / `reference_pair` / `listener_situation` / `emotional_arc`），
-  ★ 两者**不是同一套**：库一的第 2 项是"参照"，本库是"对谁说"——
-  因为**词有说话人，曲没有**。
+- ★ **`to_whom` 是词才有的一问**：因为**词有说话人，曲没有**。
 - ⚠ **§2.3、§3.3、§4.1、§5.1 的例子是本 skill 自拟的**，
   不是从底本抄的。

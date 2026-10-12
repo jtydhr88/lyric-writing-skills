@@ -1,6 +1,6 @@
 ---
 name: lw-cantonese
-description: The Cantonese layer for lyric writing (粤语填词的协音层). Cantonese has nine tones plus a tenth, and a syllable sung against its own tone is heard as a different word, so tone-melody agreement is a hard constraint, not a risk score. Gives the worked system: the nine tone values and their singing names 「三九四〇五二一八六」, the four class-scales 「〇二四三」 grouping the tones by tone-tail, the truth table of natural intervals between adjacent characters, true values versus approximations and best approximation, the three-eighths and three-sixteenths laws, the elasticity of natural intervals (outward-stretching versus inward-drawn classes, the ring diagram, crossing the boundary means a wrong tone), the six-tone same-rhyme test, and when a title line may deliberately be sung off. Also covers melody-first order, rhyme, the entering tone, register, and style periods. Use when writing or checking Cantonese lyrics, or when a sung line comes out as the wrong word. 粤语、协音、九声、类音阶、声调唱名、真值表、自然音距、最佳逼近、八分三定律、六调试音法、粤语歌填词、旋律先定、入声。
+description: The Cantonese layer for lyric writing (粤语填词的协音层). Cantonese has nine tones plus a tenth, and a syllable sung against its own tone is heard as a different word, so tone-melody agreement is a hard constraint, not a risk score. Gives the worked system; the nine tone values and their singing names 「三九四〇五二一八六」, the four class-scales 「〇二四三」 grouping the tones by tone-tail, the truth table of natural intervals between adjacent characters, true values versus approximations and best approximation, the three-eighths and three-sixteenths laws, the elasticity of natural intervals (outward-stretching versus inward-drawn classes, the ring diagram, crossing the boundary means a wrong tone), the six-tone same-rhyme test, and when a title line may deliberately be sung off. Also covers melody-first order, rhyme, the entering tone, register, and style periods. Use when writing or checking Cantonese lyrics, or when a sung line comes out as the wrong word. 粤语、协音、九声、类音阶、声调唱名、真值表、自然音距、最佳逼近、八分三定律、六调试音法、粤语歌填词、旋律先定、入声。
 ---
 
 # 粤语填词的协音层（Cantonese）
@@ -30,7 +30,7 @@ description: The Cantonese layer for lyric writing (粤语填词的协音层). C
 | **十三辙、平仄、普通话四声、中文韵表** | `lw-mandarin`（★ **那一套在粤语里整套作废**） |
 | 押韵的通用原理：韵式、意外度、故意不押 | `lw-rhyme` |
 | 立意 / 意象 / 段落功能 / 人称 | `lw-song-intent`、`lw-imagery`、`lw-structure`、`lw-narrative` |
-| 旋律怎么写怎么改（含 §3.9 的装饰音）／那些字该怎么唱 | **库一** `mc-melody`、`mc-vocal-direction` |
+| 旋律怎么写怎么改（含 §3.9 的装饰音）／那些字该怎么唱 | **作曲编曲**（旋律）；**声音**（录音与演唱指导） |
 
 ---
 
@@ -291,7 +291,7 @@ description: The Cantonese layer for lyric writing (粤语填词的协音层). C
 **黄志华 p0015、p0036 把它讲成通则**：粤语歌唱的一个严格要求，是「**把升调处理为在相应的（即结束音高相同的）
 非升调前加个低二度或低三度的装饰音**」，**这类处理一般不在乐谱上显示出来，却严格要求唱者自发施行**。
 ★ **所以上声字（第二、五声）本来就是这样唱的**，是常规不是特技（第二声调值 35，**调头短、调尾长**，p0036）。
-★ **它动的是唱法，不是词**，执行归**库一** `mc-melody`／`mc-vocal-direction`；
+★ **它动的是唱法，不是词**，执行归**演唱指导**（声音），谱面上要不要写出来归**作曲编曲**；
 **词这一侧只做一件事**：把这个字**标出来**注明"此处需装饰音处理"，写进 `checks.self_audit`。
 
 ### 3.10 改旋律，与交稿前的三条硬检查
@@ -374,7 +374,7 @@ description: The Cantonese layer for lyric writing (粤语填词的协音层). C
 - [ ] ★ **歌名与 `anchor_object` 在动笔前就算过类音阶**（§2.3）
 - [ ] **有意硬拗的点题字**，问过：拗出来会不会被听懂成另一件事（§3.6）
 - [ ] 卡住处**分过类**（§3.7）；改协音时**先试换字**，倒词序的每一处**单独念过**（§3.8）
-- [ ] 要装饰音才能救的字**标出来了**并交给库一（§3.9）；**没有为了一个字去改旋律**（§3.10）
+- [ ] 要装饰音才能救的字**标出来了**，写进 `checks.self_audit` 交出去（§3.9）；**没有为了一个字去改旋律**（§3.10）
 - [ ] ★ **强拍上不是虚字**；没有可删的字；动词和宾语搭得上；写完**放过一阵子再唱一遍**（§3.10）
 - [ ] 押韵的 **scheme 定了并在重复段落贯彻了**；**尾字要拖长的地方不是入声字**（§4）
 - [ ] 语域是**混的**且**跟着编曲走**；问过"换成林夕的名字，有人会怀疑吗"（§5）
@@ -393,4 +393,4 @@ description: The Cantonese layer for lyric writing (粤语填词的协音层). C
 - **王力《诗词格律》**——入声的性质 p0021–p0023、p0025；入声韵的独立性与不通押 p0071、p0122
 - ⚠ **两条本 skill 不给的东西**：**类音阶与乐音的一一对应表**（作者明确反对，理由见 §1.2、§3.4），
   以及**近似值评分的客观标准**（作者自陈"毫无标准去支持"，§3.1）。
-- **跨库引用**：库一 `mc-melody`（装饰音、音域）与 `mc-vocal-direction`（咬字与唱法）——§3.9 那条救法在那两个 skill 里执行。
+- **不归本库的那一半**：§3.9 那条救法（装饰音、咬字与唱法）由演唱指导执行，音域与旋律归作曲编曲；本库交出去的是 `checks.self_audit` 里标出的字（对外接口见 `lw-workflow` §6）。

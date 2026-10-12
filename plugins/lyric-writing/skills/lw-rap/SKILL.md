@@ -6,18 +6,18 @@ description: Writing the words of a rap (说唱的词本身), not how the vocal 
 # 说唱的词（Rap Lyrics）
 
 > **本 skill 只管词本身。**
-> 人声在编曲里怎么摆、delivery 怎么分配、flow 怎么记谱、beat 怎么做——**全在编曲库 `mc-style-hiphop`**。
+> 人声在编曲里怎么摆、delivery 怎么分配、beat 怎么做——是**作曲编曲**（说唱编排）与演唱指导的事，不在本库。
 
-两边共用同一批底本，分工是一刀切的：
+分工是一刀切的：
 
 ```
-编曲库 mc-style-hiphop  ──  音节落在哪一拍、哪一拍休止、用哪档声音说
+说唱编排（作曲编曲）  ──  音节落在哪一拍、哪一拍休止、用哪档声音说
 本 skill  lw-rap        ──  那些音节是什么字、押几处韵、押的是什么、说的是什么
 ```
 
 ★ 交界处只有一件事要对齐：**押韵落点**。
-编曲库从"落 4 拍还是落弱拍"这一侧写它，本 skill 从"这一行要押几个字"这一侧写它，
-**记谱一律用编曲库 `mc-style-hiphop` reference §3.1 的 flow diagram，本 skill 不另造一套。**
+编排那一侧从"落 4 拍还是落弱拍"写它，本 skill 从"这一行要押几个字"写它；
+**落点用 flow diagram 记（§2.2），本 skill 不另造一套。**
 
 ## ★ 这个 skill 与本库其他 skill 最大的不同
 
@@ -50,10 +50,10 @@ description: Writing the words of a rap (说唱的词本身), not how the vocal 
 
 | 不归这里 | 归哪 |
 |---|---|
-| **人声在编曲里的位置、进退场、和伴奏的密度互让** | **编曲库 `mc-style-hiphop` §7.5** |
-| **delivery 参数**（音高档、音量档、音色、staccato、气声、ad-lib） | **编曲库 `mc-style-hiphop` §7.3** 与其 reference §4 |
-| **flow 怎么记谱、音节怎么落在 16 分网格上、休止与换气位置** | **编曲库 `mc-style-hiphop` §7.2** 与其 reference §3 |
-| **beat 怎么做、采样、808、速度区间** | **编曲库 `mc-style-hiphop`** |
+| **人声在编曲里的位置、进退场、和伴奏的密度互让** | **作曲编曲**（说唱编排） |
+| **delivery 参数**（音高档、音量档、音色、staccato、气声、ad-lib） | **作曲编曲**（说唱编排）与**声音**（演唱指导） |
+| **音节最后落在 16 分网格的哪一格、休止与换气位置** | **作曲编曲**（说唱编排）；本 skill 在 flow diagram 上标打算的落点（§2.2） |
+| **beat 怎么做、采样、808、速度区间** | **作曲编曲** |
 | 通用押韵原理：韵家族、韵的意外度、什么时候故意不押 | `lw-rhyme` |
 | 十三辙、普通话韵表、平仄 | `lw-mandarin` |
 | **中文字调与旋律/语调的冲突（倒字）** | `lw-tone-check`（★ 半唱型 hook 一定要过这一关，见 §9.4） |
@@ -70,7 +70,7 @@ description: Writing the words of a rap (说唱的词本身), not how the vocal 
 
 | 刻度 | 问什么 | 常见取值 | 定不下来时 |
 |---|---|---|---|
-| **音节密度** | 一小节放几个音节 | 8–16（16 分网格为主，见编曲库） | 先跟着 beat 哼无意义音节数出来（§8.2） |
+| **音节密度** | 一小节放几个音节 | 8–16（16 分网格为主） | 先跟着 beat 哼无意义音节数出来（§8.2） |
 | **押韵密度** | 这些音节里几个是韵 | 每小节 1 → 11（§2） | 从每小节 2 处起步 |
 | **可懂度目标** | 听众第一遍要听懂多少 | 全懂 / 懂大意 / 只要好听 | 看内容形式（§5）——故事型必须全懂 |
 
@@ -118,9 +118,10 @@ description: Writing the words of a rap (说唱的词本身), not how the vocal 
 - 下一小节**继续同一个韵** → 两小节合并成一个 couplet（Nas 的例子：musician / inflicting / composition 接上）
 - 下一小节**换了新韵** → 溢出的部分只算上一小节的（B.I.G.《Ready to Die》：material / imperial 溢出，但第二小节由 ripper / stripper / sipper 主导）
 
-★★ **落点的记谱不在本 skill**：要把"这个韵压在第几拍"写下来，
-用**编曲库 `mc-style-hiphop` reference §3.1 的 flow diagram**（四拍一行、重音加粗、空位即休止）。
-本 skill 只负责决定**那一格填什么字**。
+★★ **落点用 flow diagram 记**：要把"这个韵压在第几拍"写下来，就用它——
+顶上标 1–4 拍，一行是一小节，重读音节加粗、落在拍号底下，空着的拍就是休止（《How to Rap》p0081、p0085；
+书里的 MC 各有自己标停顿、拉长、重音的小符号，p0080）。
+落点最后怎么定归编排那一侧；本 skill 只负责决定**那一格填什么字**。
 
 ### 2.3 密度是可以变的，而且变化本身是信号
 
@@ -155,7 +156,7 @@ R.A. the Rugged Man 建议**两种都做**：一首不断变换韵式的，一�
 是 battle 型 → 不降，但确认 punchline 那一行是听得清的（§6.3）。
 
 **失效条件**：hook 不适用高密度。hook 的词要比 verse 简单、密度低、拖长一点
-（编曲库 `mc-style-hiphop` §7.4 给了结构数字）。
+（hook 通常 4 或 8 小节，verse 通常 16 小节，《How to Rap》p0201–p0202、p0207）。
 
 ---
 
@@ -279,12 +280,12 @@ MURS 把它比作拼图：押韵的词是碎片，韵式是告诉你碎片该放
 ★ **简单韵式没有错**——像 Melle Mel 那样有才华的话，不必每段都换 flow（p0113）。
 **失效条件**：整张专辑只有一种韵式 → 那不是风格，是词汇量不够（p0109）。
 
-### 4.3 与编曲库的交界
+### 4.3 与说唱编排的交界
 
-**韵落在第几拍是编曲侧的参数**，本 skill 决定的是"这一行有几个韵、押什么"。
-两边在 `vocal.phrasing` 上对齐：
+**韵落在第几拍是编排那一侧的参数**（作曲编曲），本 skill 决定的是"这一行有几个韵、押什么"。
+交出去的是词稿和标了打算落点的 flow diagram（§2.2）：
 
-- 韵的**落点、休止、换气位置** → 编曲库 `mc-style-hiphop` reference §3.4–§3.5
+- 韵的**落点、休止、换气位置** → 编排那一侧定；本 skill 只标打算
 - 韵的**数量、种类、内容** → 本 skill §2、§3
 
 ★ **一条必须知道的反向约束**：beat 若是 3 小节循环，词必须专门为它写——
@@ -347,7 +348,7 @@ Canibus 在《Uni-4-Orm》——
 | **位置** | 常放在 bar 的**结尾**，以拿到听众的反应 | 《How to Rap》p0072 |
 | **配一个 1 拍休止** | couplet 的第二行放 punchline，两行之间用 1 拍休止隔开 | 《How to Rap 2》p0055–p0057 |
 
-★ **落点与休止归编曲库**（`mc-style-hiphop` reference §3.4）；本 skill 只管**那句话是什么**。
+★ **落点与休止最后由编排那一侧定**（作曲编曲）；本 skill 只管**那句话是什么**。
 
 **自检动作**：把 punchline 单独念出来。**离开上下文还成立** → 它是 punchline；
 **必须解释才好笑** → 它是一个想法，还不是 punchline。
@@ -512,8 +513,8 @@ Masta Ace 的 "as fake as a tooth-fairy"、Chino XL 的 Medusa、Canibus 的 ant
 全同 → 换掉一两个；毫无重复 → 至少让 hook 前那两个同调。
 
 **② 半唱型 hook：声调必须过倒字这一关。**
-★★ **rap 段没有固定音高，倒字不适用**（编曲库 `mc-style-hiphop` §7.1 已经这样定）。
-但 hip-hop 的 hook 常常是**旋律化的**（编曲库 §7.4：旋律化的 hook 比说唱 hook 更受欢迎），
+★★ **rap 段没有固定音高，倒字不适用**——`lw-tone-check` 判的是进入一个字的旋律音程，说出来的段落没有这个音程可判。
+但 hip-hop 的 hook 常常是**旋律化的**（书里的 MC 说，眼下唱出来的 hook 比说出来的更受欢迎，《How to Rap》p0202），
 **旋律化的 hook 一出现，倒字立刻适用**。
 
 → **hook 的每一个字都要过 `lw-tone-check`**；韵辙与平仄去 `lw-mandarin`。
@@ -567,8 +568,8 @@ Masta Ace 的 "as fake as a tooth-fairy"、Chino XL 的 Medusa、Canibus 的 ant
 - [ ] ★ hook 如果是旋律化的，**过了 `lw-tone-check`**（§9.4②）
 
 **交界**
-- [ ] flow 的落点与休止用的是**编曲库的 flow diagram**，没有另造记谱
-- [ ] delivery（音高/音量/音色/长短）**没有写进词稿**，它归编曲库
+- [ ] flow 的落点与休止用的是 **§2.2 的 flow diagram**，没有另造记谱
+- [ ] delivery（音高/音量/音色/长短）**没有写进词稿**，它归说唱编排与演唱指导
 
 ---
 
@@ -578,10 +579,9 @@ Masta Ace 的 "as fake as a tooth-fairy"、Chino XL 的 Medusa、Canibus 的 ant
   与 Paul Edwards《How to Rap 2: Advanced Flow and Delivery》。
   两本都是对一百多位 MC 的访谈汇编，所以**书里本来就并排放着互相矛盾的说法**——
   本 skill 保留了这种并排，并标明是谁说的。
-- **同一批底本的另一半在编曲库 `mc-style-hiphop`**：那边写人声在编曲里的位置、
-  flow 与拍的关系、delivery 的八个维度、段落结构数字；本 skill 写词本身。
-  ★ 两边都引同一本书，**引到的页是不同的页**——交界只在"押韵落点"，
-  记谱法以编曲库 reference §3.1 为准。
+- **这两本书里讲人声在编曲里的位置、flow 与拍的关系、delivery 的那一半，本 skill 没有收**——
+  那是说唱编排（作曲编曲）与演唱指导的事。本 skill 只收词本身，
+  外加 §2.2 的 flow diagram 记法（《How to Rap》p0080–p0085）与 hook／verse 的长度（p0201–p0208）。
 - **中文说唱一节（§9）是把底本的英文结论按汉语的语音结构重新推的**，
   不是从书里抄的——书里没有中文材料。推的依据写在每一条的"怎么改 / 为什么"里，
   可以逐条反驳。韵辙与声调的材料在 `lw-mandarin` 与 `lw-tone-check`。
